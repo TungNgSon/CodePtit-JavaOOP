@@ -14,6 +14,7 @@ import java.math.*;
 public class ChiaHet {
     public static void main(String[] args) throws IOException
     {
+        //Scanner 
         Scanner sc=new Scanner(new File("Codeptit\\src\\Contest2"));
         int n=sc.nextInt();
         sc.nextLine();
