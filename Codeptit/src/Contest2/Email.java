@@ -13,6 +13,7 @@ import java.io.*;
 public class Email {
     public static void main(String[] args) throws IOException
     {
+        //Scanner
         Scanner sc=new Scanner(new File("DANHSACH.in"));
         HashMap<String,Integer> mp=new HashMap<>();
         int t=sc.nextInt();
