@@ -11,15 +11,10 @@ package Contest2;
 import java.util.*;
 import java.io.*;
 public class Email {
-    public static void main(String[] args) throws IOException
+    private static Scanner sc=new Scanner(new File("DANHSACH.in"));
+    static void solve()
     {
-        Scanner sc=new Scanner(new File("DANHSACH.in"));
-        HashMap<String,Integer> mp=new HashMap<>();
-        int t=sc.nextInt();
-        sc.nextLine();
-        while(t-->0)
-        {
-            String a[]=sc.nextLine().trim().split("\\s+");
+        String a[]=sc.nextLine().trim().split("\\s+");
             String res=a[a.length-1].toLowerCase();
             for(int i=0;i<a.length-1;i++)
             {
@@ -37,6 +32,18 @@ public class Email {
                 mp.put(res, mp.get(res)+1);
             }
             System.out.println("");
+    }
+        
+    public static void main(String[] args) throws IOException
+    {
+        
+        HashMap<String,Integer> mp=new HashMap<>();
+        int t=sc.nextInt();
+        sc.nextLine();
+        while(t-->0)
+        {
+            
+            solve();
             
         }
             
