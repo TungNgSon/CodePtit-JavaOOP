@@ -30,6 +30,6 @@ public class MonHoc implements Comparable<MonHoc>
     @Override
     public int compareTo(MonHoc m)
     {
-        return this.name.compareTo(m.getName());
+        return this.name.compareTo(m.name);
     }
 }
