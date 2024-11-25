@@ -1,61 +1,58 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.util.ArrayList;
+import java.util.List;
 
-import java.io.*;
-import java.util.*;
-
-/**
- *
- * @author Moment
- */
 public class J07032 {
-    static boolean check(int n)
-    {
-        if(n<10)
-        {
+
+    public static boolean isValid(String s) {
+        StringBuilder sb = new StringBuilder(s).reverse();
+        if (!sb.toString().equals(s)) {
             return false;
         }
-        String s=Integer.toString(n);
-        StringBuilder tmp=new StringBuilder(s);
-        if(!tmp.equals(tmp.reverse()))
-        {
+
+        if (s.length() % 2 == 0 || s.length() == 1) {
             return false;
         }
-        for(int i=0;i<s.length();i++)
-        {
-            if((s.charAt(i)-'0')%2==1)
-            {
+        for (int i = 0; i < s.length(); i++) {
+            if ((s.charAt(i) - '0') % 2 == 0) {
                 return false;
             }
         }
         return true;
-        
     }
-    public static void main(String[] args) throws IOException,ClassNotFoundException
-    {
-        ObjectInputStream ois=new ObjectInputStream(new FileInputStream("DATA1.in"));
-        ArrayList<Integer> a=(ArrayList<Integer>)ois.readObject();
-        ObjectInputStream ois1=new ObjectInputStream(new FileInputStream("DATA2.in"));
-        ArrayList<Integer> b=(ArrayList<Integer>)ois1.readObject();
-        TreeSet<Integer> se=new TreeSet<>();
-        for(Integer x:a)
-        {
-            if(check(x)&&b.contains(x))
-            {
-                se.add(x);
+
+    public static void main(String[] args) throws FileNotFoundException, IOException, ClassNotFoundException {
+        int[] dd = new int[1000001];
+
+        ObjectInputStream ois1 = new ObjectInputStream(new FileInputStream("DATA1.in"));
+        List<Integer> al1 = (ArrayList<Integer>) ois1.readObject();
+
+        ObjectInputStream ois2 = new ObjectInputStream(new FileInputStream("DATA2.in"));
+        List<Integer> al2 = (ArrayList<Integer>) ois2.readObject();
+
+        for (Integer x : al1) {
+            if (isValid(x.toString()) && al2.contains(x)) {
+                dd[x]++;
             }
         }
-        int cnt=0;
-        for(Integer x:se)
-        {
-            System.out.print(x+" ");
-            System.out.println(Collections.frequency(a, x)+Collections.frequency(b, x));
-            cnt++;
-            if(cnt==10)
-            {
+
+        for (Integer x : al2) {
+            if (isValid(x.toString()) && dd[x] != 0) {
+                dd[x]++;
+            }
+        }
+
+        int dem = 0;
+        for (int i = 0; i <= 1000000; i++) {
+            if (dd[i] > 0) {
+                System.out.println(i + " " + dd[i]);
+                dem++;
+            }
+            if (dem == 10) {
                 break;
             }
         }

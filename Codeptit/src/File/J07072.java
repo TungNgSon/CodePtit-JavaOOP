@@ -27,6 +27,10 @@ public class J07072 {
             String s=inp.nextLine();
             a.add(norN(s));
         }
-        
+        Collections.sort(a);
+        for(String x:a)
+        {
+            System.out.println(x);
+        }
     }
 }
