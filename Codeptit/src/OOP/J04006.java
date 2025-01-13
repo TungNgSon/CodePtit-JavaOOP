@@ -38,8 +38,13 @@ public class J04006 {
     
     
     public static void main(String[] args) {
-        Scanner inp=new Scanner(System.in);
-        SinhVien sv=new SinhVien(inp.nextLine(),inp.next(),inp.next(),inp.nextDouble());
+        Scanner inp = new Scanner(System.in);
+        String name = inp.nextLine();
+        String idc = inp.next();
+        String birth = inp.next();
+        double gpa = inp.nextDouble();
+        inp.nextLine(); // Consume the remaining newline
+        SinhVien sv = new SinhVien(name, idc, birth, gpa);
         System.out.println(sv);
     }
    
